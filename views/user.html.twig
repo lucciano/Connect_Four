@@ -32,14 +32,17 @@ $( document ).ready(function() {
     }
 
     updateboard = function (data){
+	//It will set the board as is reported by the server.
 	for (row in data['game']) {
 		for (line in data['game'][row]) {
-		    if(data['game'][row] != 0){
-			    var id = "#" + row + "_" + line;
+		    var id = "#" + row + "_" + line;
+		    if(data['game'][row][line] != 0){
 			    $(id).addClass('player' + data['game'][row][line]);
 			    $(id).removeClass('playable');
 			    $(id).addClass('played');
-	            }
+	            }else{
+			    $(id).addClass('playable');
+		    }
 		}
 	}
     }
