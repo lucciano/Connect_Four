@@ -19,11 +19,39 @@ $( document ).ready(function() {
     };
 
     handlerClick = function(){
-	console.log("handlerClick");
-	$(this).addClass(my_style);
-	$(this).addClass("played");
-	$(this).removeClass("playable");
+	if(!$(this).hasClass("played") && $(this).hasClass("playable")){
+		$(this).addClass(my_style);
+		$.ajax('/turn/{{user}}/'+$(this).attr('id'), {
+			'method' : 'POST', 
+			'success': function(){
+				$(this).addClass("played");
+				$(this).removeClass("playable");
+			}
+			});
+	}
     }
+
+    updateboard = function (data){
+	for (row in data['game']) {
+		for (line in data['game'][row]) {
+		    if(data['game'][row] != 0){
+			    var id = "#" + row + "_" + line;
+			    $(id).addClass('player' + data['game'][row][line]);
+			    $(id).removeClass('playable');
+			    $(id).addClass('played');
+	            }
+		}
+	}
+    }
+
+    doPing = function (){
+	    setTimeout(function() {
+		    $.ajax('/game-status', {'success' : updateboard });
+		    doPing();
+	    }, 1000);
+    }
+
+    doPing();
 
     $(".circle").hover( handlerIn, handlerOut ) ;
     $(".circle").click( handlerClick );

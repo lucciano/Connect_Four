@@ -19,6 +19,18 @@ $app->get('/games/{user}', function($user) use($app) {
     return $app['twig']->render('user.html.twig', array('user' => (int) $user, 'css_class' => $style_map[$user]));
 })->bind('user'); 
 
+$app->post('/turn/{user}/{move}',  function($user, $move) use ($app) {
+	$game = new FourInLine\Status();
+	list($x, $y)= preg_split("|_|", $move);
+	$game->move($user, $x, $y);
+	return $app->json($game->export());
+})->bind('turn');
+
+$app->get('/game-status', function() use ($app) {
+	$game = new FourInLine\Status();
+	return $app->json($game->export());
+})->bind('game-status');
+
 $app->error(function (\Exception $e, $code) use ($app) {
 
     if ($code == 404) {
