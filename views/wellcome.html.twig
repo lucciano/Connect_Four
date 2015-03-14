@@ -1,6 +1,9 @@
 {% extends "base.html.twig" %}
 {% block body %}
+<div align="center">
 <h1>Wellcome to four in line.</h1>
-<div><a href="{{ app.url_generator.generate('user', {'user' : '1'}) }}">Play as User 1</a></div>
-<div><a href="{{ app.url_generator.generate('user', {'user' : '2'}) }}">Play as User 2</a></div>
+<h2><a href="{{ app.url_generator.generate('user', {'user' : '1'}) }}">Play as User 1</a></h2>
+<br/>
+<h2><a href="{{ app.url_generator.generate('user', {'user' : '2'}) }}">Play as User 2</a></h2>
+</div>
 {% endblock %}
