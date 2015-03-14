@@ -2,9 +2,12 @@
 require_once __DIR__.'/../vendor/autoload.php'; 
 
 $app = new Silex\Application(); 
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/../views',
+));
 
 $app->get('/', function() use($app) { 
-    return 'Wellcome page';
+    return $app['twig']->render('wellcome.html.twig');
 }); 
 
 $app->get('/games/{user}', function($user) use($app) { 
