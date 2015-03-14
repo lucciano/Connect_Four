@@ -2,4 +2,33 @@
 {% block body %}
 <h1 align="center">User {{ user }}</h1>
 {% include 'board.html.twig'  %}
+<script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    var my_style = "{{css_class}}";
+    handlerIn = function (){
+	if(!$(this).hasClass("played") && $(this).hasClass("playable")){
+		$(this).addClass(my_style);
+	}
+	
+    };
+    handlerOut = function (){
+	if(!$(this).hasClass("played")){
+		$(this).removeClass(my_style);
+	}
+    };
+
+    handlerClick = function(){
+	console.log("handlerClick");
+	$(this).addClass(my_style);
+	$(this).addClass("played");
+	$(this).removeClass("playable");
+    }
+
+    $(".circle").hover( handlerIn, handlerOut ) ;
+    $(".circle").click( handlerClick );
+
+    $(".circle").addClass( "playable" );
+});
+</script>
 {% endblock %}

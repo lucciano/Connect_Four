@@ -1,56 +1,9 @@
 <table id="board" align="center">
+  {% for r in range(1,6) %}
 <tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
+  {% for c in range(1,7) %}
+	<td> <div id="{{r}}_{{ c }}" class="circle"></div></td>
+  {% endfor %}
 </tr>
-<tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-</tr>
-<tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-</tr>
-<tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-</tr>
-<tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-</tr>
-<tr>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-<td> <div class="circle"></div></td>
-</tr>
-
+  {% endfor %}
+</table>

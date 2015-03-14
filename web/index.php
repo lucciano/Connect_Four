@@ -12,10 +12,11 @@ $app->get('/', function() use($app) {
 }); 
 
 $app->get('/games/{user}', function($user) use($app) { 
+    $style_map = array('1' => 'player1', '2' => 'player2');
     if(!in_array($user, array('1','2'))){
 	throw new \Exception;
     }
-    return $app['twig']->render('user.html.twig', array('user' => (int) $user));
+    return $app['twig']->render('user.html.twig', array('user' => (int) $user, 'css_class' => $style_map[$user]));
 })->bind('user'); 
 
 $app->error(function (\Exception $e, $code) use ($app) {
