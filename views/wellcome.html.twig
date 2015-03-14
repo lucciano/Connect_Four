@@ -1,20 +1,6 @@
-<html>
-<head>
-<title>Four in Line</title>
-<style>
-.circle{
-	width:70px;
-	height:70px;
-	border-radius:35px;
-	font-size:20px;
-	color:#fff;
-	line-height:100px;
-	text-align:center;
-	border: 3px solid black;
-}
-</style>
-</head>
-<body>
+{% extends "base.html.twig" %}
+{% block body %}
 <h1>Wellcome to four in line.</h1>
-{% include 'board.html.twig'  %}
-</body>
+<div><a href="{{ app.url_generator.generate('user', {'user' : '1'}) }}">Play as User 1</a></div>
+<div><a href="{{ app.url_generator.generate('user', {'user' : '2'}) }}">Play as User 2</a></div>
+{% endblock %}
