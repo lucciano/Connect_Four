@@ -19,6 +19,12 @@ $app->get('/games/{user}', function($user) use($app) {
     return $app['twig']->render('user.html.twig', array('user' => (int) $user, 'css_class' => $style_map[$user]));
 })->bind('user'); 
 
+$app->get('/reset/{user}', function($user) use($app) { 
+	$game = new FourInLine\Status();
+	$game->newGame();
+	return $app->redirect('/games/'.$user);
+})->bind('reset');
+
 $app->post('/turn/{user}/{move}',  function($user, $move) use ($app) {
 	$game = new FourInLine\Status();
 	list($x, $y)= preg_split("|_|", $move);

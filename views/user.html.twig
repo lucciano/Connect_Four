@@ -2,6 +2,7 @@
 {% block body %}
 <h1 align="center">User {{ user }}</h1>
 {% include 'board.html.twig'  %}
+<a href="/reset/{{user}}">Rest Board</a>
 <script>
 $( document ).ready(function() {
     console.log( "ready!" );
