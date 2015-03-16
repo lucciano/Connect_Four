@@ -43,6 +43,7 @@ class Status {
 		while(isset($this->data['game'][$x+1][$y]) and $this->data['game'][$x+1][$y] == 0){
 			$x += 1;
 		}
+		$this->data['game'][$x][$y] = $user;
 
 		return true;
 	}
